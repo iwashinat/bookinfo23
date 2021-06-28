@@ -64,5 +64,3 @@ spec:
                 secretKeyRef:
                   name: mysql-credentials
                   key: rootpasswd
-
----
