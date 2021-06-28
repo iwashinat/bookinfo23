@@ -10,6 +10,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-    serviceName: productpage
-    servicePort: 9080
+  rules:
+  - host: bookinfo23.targetcluster-1303bf06b541565e09085cf582022ff2-0000.jp-tok.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: productpage
+          servicePort: 9080
