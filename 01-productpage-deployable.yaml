@@ -8,13 +8,13 @@ metadata:
   labels:
     app.kubernetes.io/name: productpage
     app.kubernetes.io/instance: bookinfo-demo
+    appname: bookinfo-demo
 spec:
   ports:
     - port: 9080
       targetPort: http
       protocol: TCP
       name: http
-  type: NodePort
   selector:
     app.kubernetes.io/name: productpage
     app.kubernetes.io/instance: bookinfo-demo
@@ -50,12 +50,15 @@ spec:
             value: "probabilistic"
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
+          - name: UA_JAEGER_ENDPOINT
+            value: "http://jaeger.cp4mcm-cloud-native-monitoring:14268/api/traces"
+          - name: JAEGER_ENDPOINT
+            value: "http://jaeger.cp4mcm-cloud-native-monitoring:14268/api/traces"
           - name: LATENCY_SAMPLER_PARAM
             value: "1"
           name: productpage
           #image: "docker.io/dymaczew/examples-bookinfo-productpage-v1:2020.2.1"
-          image: "docker.io/dymaczew/examples-bookinfo-productpage-v1:2020.2.1"
-          #image: "docker.io/istio/examples-bookinfo-productpage-v1:1.15.0"
+          image: "docker.io/dymaczew/examples-bookinfo-productpage-v1:2021.2.3"   
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
