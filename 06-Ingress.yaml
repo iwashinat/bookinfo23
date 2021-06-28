@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: bookinfo-ingress
-  annotations:
-    mcm.ibm.com/service-discovery: "{}"
   labels:
     app.kubernetes.io/name: bookinfo
     app.kubernetes.io/instance: bookinfo-demo
